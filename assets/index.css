@@ -1,4 +1,3 @@
-
 :root {
     --vscode-bg: #1e1e1e;
     --vscode-sidebar: #252526;
@@ -19,14 +18,14 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     background-color: var(--vscode-bg);
     color: var(--vscode-text);
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh;
+    font-size: clamp(14px, 2vw, 16px);
 }
 
 .layout-default {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 #controls-row {
@@ -37,20 +36,22 @@ body {
     gap: 12px;
     border-bottom: 1px solid var(--vscode-border);
     height: 36px;
+    flex-wrap: wrap;
 }
 
 .small-button {
     background-color: var(--vscode-button);
     color: white;
     border: none;
-    padding: 4px 8px;
+    padding: clamp(4px, 1vw, 8px) clamp(8px, 2vw, 16px);
     border-radius: 3px;
-    font-size: 12px;
+    font-size: clamp(12px, 1.5vw, 14px);
     cursor: pointer;
     height: 24px;
     display: flex;
     align-items: center;
     gap: 4px;
+    white-space: nowrap;
 }
 
 .small-button:hover {
@@ -169,6 +170,13 @@ body {
     flex: 1;
     overflow: hidden;
     width: 100%;
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {
+    .panel-container {
+        flex-direction: row;
+    }
 }
 
 .editor-container {
@@ -178,6 +186,7 @@ body {
     transition: width 0.3s ease;
     overflow: hidden;
     width: 50%;
+    min-width: 300px;
 }
 
 .editor-header {
@@ -336,7 +345,6 @@ body {
 .log-message:hover {
     background-color: rgba(255, 255, 255, 0.03);
 }
-
 
 #output::-webkit-scrollbar {
     width: 10px;
